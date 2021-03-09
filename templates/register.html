@@ -1,0 +1,51 @@
+ <!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>注册</title>
+    <script src="../static/js/jquery.js"></script>
+</head>
+<body>
+<h1>欢迎来到注册</h1>
+<form action="" method="post">
+    <table>
+        <tr>
+            <td>邮箱：</td>
+            <td><input type="text" placeholder="请输入您的邮箱" id="email" name="email"><span id="e1"></span></td>
+        </tr>
+        <tr>
+            <td>密码：</td>
+            <td><input type="password" placeholder="请输入您的密码" id="password" name="password"><span id="p1"></span></td>
+        </tr>
+        <tr>
+            <td colspan="2"><button id="login">登录</button></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+<script>
+    $(function () {
+       $("#login").click(function () {
+            var email = $("#email").val()
+            var password = $("#password").val()
+           if (!email){
+               $('#e1').html('邮箱不能为空')
+               return false;
+           }
+           if (!password){
+               $('#p1').html('密码不能为空')
+               return false;
+           }
+           if(email.length < 6){
+               $('#e1').html('邮箱长度不能小于6位')
+               return false;
+           }
+       })
+    })
+</script>
+</body>
+</html>

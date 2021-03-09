@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页</title>
+</head>
+<body>
+<div align="center">
+<form action="" method="post">
+    <a href="{% url 'insert' %}">添加新闻信息</a>根据新闻类型进行查询:
+        <select name="type" id="type">
+            <option value="新闻">新闻</option>
+            <option value="财经">财经</option>
+            <option value="娱乐">娱乐</option>
+            <option value="体育">体育</option>
+        </select>
+    <table align="center" border="1px">
+            <tr style="text-align: center">
+                <td>新闻编号</td>
+                <td>新闻标题</td>
+                <td>新闻作者</td>
+                <td>新闻内容</td>
+                <td>发布时间</td>
+                <td>新闻状态</td>
+                <td>新闻类型</td>
+                <td>编辑</td>
+            </tr>
+        {% for i in info %}
+            <tr>
+                <td>{{ i.nid }}</td>
+                <td>{{ i.nTitle }}</td>
+                <td>{{ i.nAuthor }}</td>
+                <td>{{ i.nContent }}</td>
+                <td>{{ i.nPubDateTime |date:"Y-m-d H:i:s" }}</td>
+                {% if i.NStatus %}
+                    <td>已审核</td>
+                {% else %}
+                    <td>未审核</td>
+                {% endif %}
+                <td>{{ i.tid.tName }}</td>
+                <td><a href="{% url 'delete' i.nid %}" onclick="alert('删除成功!!')">删除</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+</form>
+</div>
+</body>
+</html>
